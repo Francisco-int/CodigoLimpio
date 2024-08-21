@@ -1,0 +1,37 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Ejercicio1 : MonoBehaviour
+{
+    public float Fuerza = 100f;
+    private float moveSpeed = 5f;
+    private Rigidbody2D rb_2d;
+
+    public float speed;
+
+    private void Start()
+    {
+        rb_2d = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update()
+    {
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Verical");
+
+        // Mover el jugador
+        Movimiento();
+
+    }
+
+    void Movimiento()
+    {
+        Vector3 movement = new Vector3(x, y, 0) * moveSpeed * Time.deltaTime;
+        transform.Translate(movement);
+    }
+}
+//Lo que se hizo fue mover el codigo que reliza el
+//movimiento del personaje en el mundo moverlo a un metodo para simplificar
+//y tener fijado el código que hace mover el personaje
+
