@@ -1,0 +1,66 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Ejercicio4 : MonoBehaviour
+{
+    public float _Speed;
+    bool esta_Saltando;
+    public float Z;
+    private Rigidbody2D fisicas;
+    public float _Speed2;
+    bool isJumping;
+
+        private void Start()
+    {
+        fisicas = GetComponent<Rigidbody2D>();
+    }
+    private void Update()
+    {
+        MovimientoJugador();
+        SaltoJugador();
+        RotacionJugador();
+
+    }
+
+    void MovimientoJugador()
+    {
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            float movimiento_x = Input.GetAxis("Horizontal");
+            fisicas.velocity = new Vector2(movimiento_x, 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            float movimiento_x = Input.GetAxis("Horizontal");
+            fisicas.velocity = new Vector2(movimiento_x, 0);
+        }                
+    }
+
+    void SaltoJugador()
+    {
+        if (Input.GetButton("Jump") && !esta_Saltando)
+        {
+            fisicas.AddForce(Vector2.up * _Speed2);
+            Debug.Log("Estoy saltando Wiiii");
+            isJumping = true;
+        }
+    }
+
+    void RotacionJugador()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Z += Time.deltaTime * 10;
+            transform.rotation = Quaternion.Euler(0, 0, Z);
+
+        }
+    }
+
+
+}
+//Lo que se hizo fue dividir cada comportamiento en un metodo para
+//que quede claro que hace cada código y admeas se escribieron
+//nombres claros de lo que realiza cada metodo para no tener que
+//agregar código de texto y quede un código zombie
