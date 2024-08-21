@@ -1,0 +1,81 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Ejercicio2 : MonoBehaviour
+{
+    
+
+    public void Informacion(Info info)
+    {
+        Debug.Log(info.Attack);
+        Debug.Log(info.HP);
+        Debug.Log(info.Defense);
+        Debug.Log(info.Name);
+        Debug.Log(info.IsDead);
+    }
+
+    
+
+}
+
+public class Info
+{
+    string personajeName;
+    int hp;
+    int attack;
+    int defense;
+    bool isDead;
+
+    public string Name => personajeName;
+    public int HP => hp;
+    public int Attack => attack;
+    public int Defense => defense;
+    public bool IsDead => isDead;
+
+
+    public void Attack()
+    {
+        if (!isDead)
+        {
+            int damageDealt = attack - defense;
+            if (damageDealt > 0)
+            {
+                hp -= damageDealt;
+                if (hp <= 0)
+                {
+                    isDead = true;
+                }
+            }
+        }
+    }
+
+    public void CastSpell()
+    {
+        if (!isDead)
+        {
+            int spellPower = 10;
+            int spellDamage = spellPower - defense;
+            if (spellDamage > 0)
+            {
+                hp -= spellDamage;
+                if (hp <= 0)
+                {
+                    isDead = true;
+                }
+            }
+        }
+    }
+
+    public void Heal()
+    {
+        if (!isDead)
+        {
+            hp += 15;
+        }
+    }
+}
+
+//Lo que se hizo fue eliminar los parametros que pedia el metodo Informacion
+//para asi simplificar y directamente crear una clase en donde este toda las
+//info que se pide para luego mostrarla por la consola
