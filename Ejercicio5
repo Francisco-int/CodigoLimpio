@@ -1,0 +1,66 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Ejercicio5 : MonoBehaviour
+{
+
+    private ActivarMision miMision;
+
+    void Awake()
+    {
+        miMision = new NullItem();
+    }
+
+    void Update()
+    {
+        Mision();
+    }
+
+    public void EmpezarMision(ActivarMision mission)
+    {
+            miMision = mission;
+            mission.StartMission();
+    }
+    public void Mision()
+    {
+        miMision = new NullItem();
+        Debug.Log(miMision.GetName())
+        miMision.NullMision();
+    }
+
+
+
+    public class ActivarMision : MonoBehaviour
+    {
+           
+        }
+        public void StartMission()
+        {
+            Debug.Log("Comenzar");
+        }
+
+        public void CompleteMission()
+        {
+            Debug.Log("Logica de la Mision");
+        }
+    }
+}
+public class NullItem : MonoBehaviour
+{
+    public NullItem() { }
+
+    public override void NullMision()
+    {
+        Debug.log("No hay mision");
+    }
+    public override string GetName()
+    {
+        return "non-mission";
+    }
+
+}
+
+//Lo que se hizo fue eliminar el condicional null, para
+//asi crear una clase por separado para que verifique si
+//este objeto exite o no.
