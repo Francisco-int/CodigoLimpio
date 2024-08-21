@@ -1,0 +1,36 @@
+using UnityEngine;
+
+public class Ejercicio3 : MonoBehaviour
+{
+
+   public abstract void UseSkill()
+
+}
+
+public class AtaqueFisico : Ejercicio3
+{
+    public override void UseSkill()
+    {
+        Debug.Log("Logica de Ataque fsico");
+    }
+}
+
+public class Defensa : Ejercicio3
+{
+    public override void UseSkill()
+    {
+        Debug.Log("Logica de defensa");
+    }
+}
+
+public class AtaqueMagico : Ejercicio3
+{
+    public override void UseSkill()
+    {
+        Debug.Log("Logica de Ataque magico");
+    }
+}
+
+//Lo que se hizo fue eliminar el codigo o condicional Switch, para asi
+//crear clases para cada caso que estaba dentro del Switch
+//y crear un metodo, en cada una de estas clases, con sus repectivos comportamientos.
